@@ -46,7 +46,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="bg-black min-h-screen text-white">
-      <div className="max-w-6xl mx-auto px-6 pt-24 pb-32">
+      <div className="max-w-full w-full mx-auto px-4 sm:px-6 pt-24 pb-32">
         
         {/* HEADER */}
         <motion.div
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
         </div>
 
         {/* PROJECTS GRID - 2 COLUMNS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 w-full max-w-3xl mx-auto">
           {filteredProjects.map((project, i) => (
             <motion.div
               key={project.id}
@@ -107,7 +107,9 @@ export default function ProjectsPage() {
                 )}
                 {/* Fallback text if media fails */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span className="text-white/30 text-xl font-medium">Video</span>
+                  <span className="text-white/30 text-xl font-medium">
+                    {project.mediaType === "video" ? "Video" : "Image"}
+                  </span>
                 </div>
               </div>
 

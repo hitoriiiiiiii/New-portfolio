@@ -5,7 +5,23 @@ import Link from "next/link"
 import { useState } from "react"
 import FloatingBottomNav from "@/components/FloatingBottomNav"
 
-const designsData = [
+type MediaType = "image" | "video"
+
+type DesignItem = {
+  id: number
+  name: string
+  description: string
+  date: string
+  keywords: string[]
+  liveUrl: string
+  githubUrl: string
+  category: string
+  featured: boolean
+  mediaType: MediaType
+  mediaSrc: string
+}
+
+const designsData: DesignItem[] = [
   {
     id: 1,
     name: "Mobile App UI",
@@ -16,7 +32,7 @@ const designsData = [
     githubUrl: "#",
     category: "UI/UX",
     featured: true,
-    mediaType: "image" as const,
+    mediaType: "image",
     mediaSrc: "/projects/design-mobile.jpg"
   },
   {
@@ -42,7 +58,7 @@ export default function DesignsPage() {
 
   return (
     <main className="bg-black min-h-screen text-white">
-      <div className="max-w-6xl mx-auto px-6 pt-24 pb-32">
+      <div className="max-w-full w-full mx-auto px-4 sm:px-6 pt-24 pb-32">
 
         {/* HEADER */}
         <motion.div
@@ -72,7 +88,7 @@ export default function DesignsPage() {
         </div>
 
         {/* DESIGNS GRID - 2 COLUMNS */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-3xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 w-full max-w-3xl mx-auto">
           {filtered.map((design, i) => (
             <motion.div
               key={design.id}
@@ -99,7 +115,9 @@ export default function DesignsPage() {
                 )}
 
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <span className="text-white/30 text-xl font-medium">Design</span>
+                  <span className="text-white/30 text-xl font-medium">
+                    {design.mediaType === "video" ? "Video" : "Image"}
+                  </span>
                 </div>
               </div>
 

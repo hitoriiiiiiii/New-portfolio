@@ -63,7 +63,7 @@ export default function Portfolio() {
     <main className="bg-black min-h-screen text-white relative overflow-hidden">
 
 
-      <div className="max-w-2xl mx-auto px-6 pt-20 pb-32">
+      <div className="max-w-2xl w-full mx-auto px-4 sm:px-6 pt-20 pb-32">
 
         {/* HERO */}
         <motion.section
@@ -137,7 +137,7 @@ export default function Portfolio() {
           <h2 className="text-2xl font-semibold mb-1 text-center">Skills</h2>
           <p className="text-xs text-gray-500 mb-6 text-center">Technologies & Tools I use for building!</p>
 
-          <div className="max-w-2xl mx-auto space-y-5">
+          <div className="max-w-full w-full mx-auto space-y-5">
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -154,7 +154,7 @@ export default function Portfolio() {
                 ].map((label) => {
                   const Icon = iconMap[label] || Code
                   return (
-                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[100px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
+                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[90px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
                       <Icon size={16} />
                       <span>{label}</span>
                     </div>
@@ -180,7 +180,7 @@ export default function Portfolio() {
                 ].map((label) => {
                   const Icon = iconMap[label] || Server
                   return (
-                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[100px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
+                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[90px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
                       <Icon size={16} />
                       <span>{label}</span>
                     </div>
@@ -206,7 +206,7 @@ export default function Portfolio() {
                 ].map((label) => {
                   const Icon = iconMap[label] || Database
                   return (
-                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[100px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
+                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[90px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
                       <Icon size={16} />
                       <span>{label}</span>
                     </div>
@@ -231,7 +231,7 @@ export default function Portfolio() {
                 ].map((label) => {
                   const Icon = iconMap[label] || GitBranch
                   return (
-                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[100px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
+                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[90px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
                       <Icon size={16} />
                       <span>{label}</span>
                     </div>
@@ -255,7 +255,7 @@ export default function Portfolio() {
                 ].map((label) => {
                   const Icon = iconMap[label] || Figma
                   return (
-                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[100px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
+                    <div key={label} className="flex items-center justify-center gap-2 rounded-[10px] bg-white px-2 py-1 min-w-[90px] h-[36px] text-[12px] font-semibold leading-[18px] text-[#171717]">
                       <Icon size={16} />
                       <span>{label}</span>
                     </div>
@@ -276,7 +276,7 @@ export default function Portfolio() {
           <h2 className="text-2xl font-semibold mb-1">Projects</h2>
           <p className="text-xs text-gray-500 mb-6">My Best Projects!</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5 max-w-lg mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5 w-full max-w-full mx-auto">
             {projects.map((project) => (
               <motion.div
                 key={project.id}
@@ -330,7 +330,7 @@ export default function Portfolio() {
           <h2 className="text-2xl font-semibold mb-1">Designs</h2>
           <p className="text-xs text-gray-500 mb-6">My Best Designs!</p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5 max-w-lg mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5 w-full max-w-full mx-auto">
             {designs.map((design) => (
               <motion.div
                 key={design.id}

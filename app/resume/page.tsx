@@ -3,16 +3,32 @@
 import { motion } from "framer-motion"
 import { Download, Eye, Home, Folder, Palette, FileText } from "lucide-react"
 import Link from "next/link"
-import { useState } from "react"
-import { Document, Page, pdfjs } from "react-pdf"
-
-// Required for react-pdf to work
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`
+import { useEffect, useState } from "react"
 
 export default function ResumePage() {
   const [numPages, setNumPages] = useState<number>()
   const [pageNumber, setPageNumber] = useState(1)
   const [loading, setLoading] = useState(true)
+  const [pdfWidth, setPdfWidth] = useState(0)
+  const [pdfComponents, setPdfComponents] = useState<{ Document: any; Page: any } | null>(null)
+
+  useEffect(() => {
+    async function loadPdfComponents() {
+      const pdfModule = await import("react-pdf")
+      pdfModule.pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfModule.pdfjs.version}/build/pdf.worker.min.js`
+      setPdfComponents({ Document: pdfModule.Document, Page: pdfModule.Page })
+    }
+
+    function updateWidth() {
+      const width = Math.min(window.innerWidth - 32, 600)
+      setPdfWidth(width > 300 ? width : 300)
+    }
+
+    loadPdfComponents()
+    updateWidth()
+    window.addEventListener("resize", updateWidth)
+    return () => window.removeEventListener("resize", updateWidth)
+  }, [])
 
   // UPDATE THIS: Path to your PDF in /public folder
   const resumeUrl = "/prarthana-gade-resume.pdf"
@@ -24,7 +40,7 @@ export default function ResumePage() {
 
   return (
     <main className="bg-black min-h-screen text-white">
-      <div className="max-w-4xl mx-auto px-6 pt-24 pb-32">
+      <div className="max-w-full w-full mx-auto px-4 sm:px-6 pt-24 pb-32">
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -61,27 +77,29 @@ export default function ResumePage() {
           transition={{ delay: 0.3 }}
           className="flex justify-center"
         >
-          <div className="bg-white rounded-xl p-2 shadow-2xl border border-white/10">
+          <div className="bg-white rounded-xl p-2 shadow-2xl border border-white/10 w-full max-w-[600px]">
             {loading && (
-              <div className="w-full md:w-[600px] h-[800px] bg-zinc-300 animate-pulse rounded-lg flex items-center justify-center">
+              <div className="w-full h-[800px] bg-zinc-300 animate-pulse rounded-lg flex items-center justify-center">
                 <span className="text-gray-500">Loading Resume...</span>
               </div>
             )}
 
-            <Document
-              file={resumeUrl}
-              onLoadSuccess={onDocumentLoadSuccess}
-              loading=""
-              className="flex justify-center"
-            >
-              <Page
-                pageNumber={pageNumber}
-                renderTextLayer={false}
-                renderAnnotationLayer={false}
-                width={600}
-                className="rounded-lg"
-              />
-            </Document>
+            {pdfComponents ? (
+              <pdfComponents.Document
+                file={resumeUrl}
+                onLoadSuccess={onDocumentLoadSuccess}
+                loading=""
+                className="flex justify-center"
+              >
+                <pdfComponents.Page
+                  pageNumber={pageNumber}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                  width={pdfWidth || 320}
+                  className="rounded-lg"
+                />
+              </pdfComponents.Document>
+            ) : null}
           </div>
         </motion.div>
 
