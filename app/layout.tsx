@@ -1,48 +1,55 @@
-import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
-import './globals.css'
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
-const poppins = Poppins({ 
-  subsets: ["latin"], 
+import { Providers } from "./providers";
+import { ThemeToggle } from "@/components/ThemeToggle";
+
+const poppins = Poppins({
+  subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins" 
+  variable: "--font-poppins",
 });
 
 export const metadata: Metadata = {
-  title: 'Prarthana Gade | Portfolio',
-  description: 'Software Developer & Designer',
-  generator: 'v0.app',
+  title: "Prarthana Gade | Portfolio",
+  description: "Software Developer & Designer",
+  generator: "v0.app",
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
       },
       {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
       },
       {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
+        url: "/icon.svg",
+        type: "image/svg+xml",
       },
     ],
-    apple: '/apple-icon.png',
+    apple: "/apple-icon.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={poppins.variable}>
-      <body className="bg-black text-white antialiased font-sans">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+    <html lang="en" className={poppins.variable} suppressHydrationWarning>
+      <body className="antialiased font-sans bg-background text-foreground">
+
+
+        <Providers>
+          {children}
+          <ThemeToggle />
+          {process.env.NODE_ENV === "production" && <Analytics />}
+        </Providers>
       </body>
     </html>
-  )
+  );
 }
+

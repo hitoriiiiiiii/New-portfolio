@@ -39,8 +39,8 @@ export default function ResumePage() {
   }
 
   return (
-    <main className="bg-black min-h-screen text-white">
-      <div className="max-w-full w-full mx-auto px-4 sm:px-6 pt-24 pb-32">
+    <main className="bg-background min-h-screen text-foreground">
+        <div className="max-w-full w-full mx-auto px-4 sm:px-6 pt-24 pb-32">
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ export default function ResumePage() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-semibold mb-2">Resume</h1>
-          <p className="text-gray-400 text-base">View</p>
+          <p className="text-muted-foreground text-base">View</p>
         </motion.div>
 
         {/* ACTION BUTTONS */}
@@ -77,10 +77,10 @@ export default function ResumePage() {
           transition={{ delay: 0.3 }}
           className="flex justify-center"
         >
-          <div className="bg-white rounded-xl p-2 shadow-2xl border border-white/10 w-full max-w-[600px]">
+          <div className="bg-card rounded-xl p-2 shadow-2xl border border-border w-full max-w-[600px]">
             {loading && (
-              <div className="w-full h-[800px] bg-zinc-300 animate-pulse rounded-lg flex items-center justify-center">
-                <span className="text-gray-500">Loading Resume...</span>
+              <div className="w-full h-[800px] bg-card animate-pulse rounded-lg flex items-center justify-center">
+                <span className="text-muted-foreground">Loading Resume...</span>
               </div>
             )}
 
@@ -130,7 +130,7 @@ export default function ResumePage() {
       </div>
 
       {/* Floating Bottom Nav - Same as other pages */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-800/90 backdrop-blur-xl border border-white/10 rounded-2xl p-1.5 flex gap-1 z-50 shadow-2xl">
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-card/90 backdrop-blur-xl border border-border/60 rounded-2xl p-1.5 flex gap-1 z-50 shadow-2xl">
         <Link href="/">
           <button className="p-3 hover:bg-white/10 rounded-xl transition">
             <Home size={20} strokeWidth={1.5} />
