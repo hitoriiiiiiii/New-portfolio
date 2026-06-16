@@ -6,6 +6,7 @@ import "./globals.css";
 import { Providers } from "./providers";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -41,12 +42,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.variable} suppressHydrationWarning>
       <body className="antialiased font-sans bg-background text-foreground">
-
-
         <Providers>
-          {children}
-          <ThemeToggle />
-          {process.env.NODE_ENV === "production" && <Analytics />}
+          <div className="min-h-screen w-full bg-background relative overflow-hidden">
+    
+
+            {/* Content above background grid */}
+            <div className="relative z-10">{children}</div>
+
+            <ThemeToggle />
+            {process.env.NODE_ENV === "production" && <Analytics />}
+          </div>
         </Providers>
       </body>
     </html>

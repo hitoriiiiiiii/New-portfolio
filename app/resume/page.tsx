@@ -131,28 +131,20 @@ export default function ResumePage() {
 
       {/* Floating Bottom Nav - Same as other pages */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-card/90 backdrop-blur-xl border border-border/60 rounded-2xl p-1.5 flex gap-1 z-50 shadow-2xl">
-        <Link href="/">
-          <button className="p-3 hover:bg-white/10 rounded-xl transition">
-            <Home size={20} strokeWidth={1.5} />
-          </button>
+        <Link href="/" className="p-3 hover:bg-white/10 rounded-xl transition" aria-label="Home">
+          <Home size={20} strokeWidth={1.5} />
         </Link>
 
-        <Link href="/projects">
-          <button className="p-3 hover:bg-white/10 rounded-xl transition">
-            <Folder size={20} strokeWidth={1.5} />
-          </button>
+        <Link href="/projects" className="p-3 hover:bg-white/10 rounded-xl transition" aria-label="Projects">
+          <Folder size={20} strokeWidth={1.5} />
         </Link>
 
-        <Link href="/designs">
-          <button className="p-3 hover:bg-white/10 rounded-xl transition">
-            <Palette size={20} strokeWidth={1.5} />
-          </button>
+        <Link href="/designs" className="p-3 hover:bg-white/10 rounded-xl transition" aria-label="Designs">
+          <Palette size={20} strokeWidth={1.5} />
         </Link>
 
-        <Link href="/resume">
-          <button className="p-3 bg-white/10 rounded-xl transition">
-            <FileText size={20} strokeWidth={1.5} />
-          </button>
+        <Link href="/resume" className="p-3 bg-white/10 rounded-xl transition" aria-label="Resume">
+          <FileText size={20} strokeWidth={1.5} />
         </Link>
       </div>
     </main>

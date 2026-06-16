@@ -15,6 +15,7 @@ const navItems = [
   { href: "/contact", Icon: FileText, label: "Contact" },
 ] as const
 
+
 export default function FloatingBottomNav({ currentPath }: FloatingBottomNavProps) {
   const active = currentPath ?? ""
 
@@ -23,14 +24,15 @@ export default function FloatingBottomNav({ currentPath }: FloatingBottomNavProp
       {navItems.map(({ href, Icon, label }) => {
         const isActive = active === href
         return (
-          <Link key={href} href={href} aria-label={label}>
-            <button
-              className={`p-3 rounded-xl transition ${
-                isActive ? "bg-foreground/10" : "hover:bg-foreground/10 hover:text-pink-300"
-              }`}
-            >
-              <Icon size={20} strokeWidth={1.5} className="text-foreground" />
-            </button>
+          <Link
+            key={href}
+            href={href}
+            aria-label={label}
+            className={`p-3 rounded-xl transition ${
+              isActive ? "bg-foreground/10" : "hover:bg-foreground/10 hover:text-pink-300"
+            }`}
+          >
+            <Icon size={20} strokeWidth={1.5} className="text-foreground" />
           </Link>
         )
       })}
