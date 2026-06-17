@@ -43,10 +43,10 @@ export default function RootLayout({
         <Providers>
           <div className="min-h-screen w-full bg-background relative overflow-hidden">
             {/* Content above background grid */}
-            <FloatingMascot />
+            {/*<FloatingMascot />*/}
             <div className="relative z-10">{children}</div>
             <ThemeToggle />
-
+    
           </div>
         </Providers>
       </body>
