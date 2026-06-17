@@ -46,7 +46,7 @@ export default function RootLayout({
             {/*<FloatingMascot />*/}
             <div className="relative z-10">{children}</div>
             <ThemeToggle />
-    
+
           </div>
         </Providers>
       </body>

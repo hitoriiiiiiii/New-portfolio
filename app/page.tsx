@@ -8,6 +8,7 @@ import SkillsSection from "@/components/home/skills";
 import QuoteSection from "@/components/home/quote";
 import ConnectSection from "@/components/home/connect";
 import { FlipAvatar } from "@/components/FlipAvatar";
+import CodingTime from "@/components/home/codingtime";  
 import Footer from "@/components/Footer"; 
 import Link from "next/link";
 
@@ -34,10 +35,49 @@ export default function Portfolio() {
           <div className="flex items-center justify-center gap-3 mb-6 flex-wrap">
             <p className="text-2xl md:text-3xl text-foreground">{"I'm Software Developer &"}</p>
             <p className="text-2xl md:text-3xl text-foreground">Designer</p>
-            <span className="px-5 py-2 bg-transparent border border-[#FB9DE7]/80 text-[#FB9DE7] text-sm font-medium rounded-[24.0817px]">
-              Open to work
-            </span>
-          </div>
+        <div className="flex items-center gap-2 sm:gap-3 flex-nowrap w-fit max-w-full">
+
+  {/* Open to Work */}
+  <span
+    className="
+      px-3 sm:px-4
+      py-1.5
+      border border-[#FB9DE7]/80
+      text-[#FB9DE7]
+      text-xs sm:text-sm
+      font-medium
+      rounded-full
+      backdrop-blur-md
+      flex items-center gap-2
+      whitespace-nowrap
+      shrink-0
+    "
+  >
+    <span className="w-2 h-2 rounded-full bg-[#FB9DE7] animate-pulse shrink-0"></span>
+    Open to work
+  </span>
+
+  {/* Coding Time */}
+  <div
+    className="
+      px-3 sm:px-4
+      py-1.5
+      border border-[#22c55e]/70
+      text-[#22c55e]
+      text-xs sm:text-sm
+      font-medium
+      rounded-full
+      backdrop-blur-md
+      flex items-center gap-2
+      whitespace-nowrap
+      shrink-0
+    "
+  >
+    <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse shrink-0"></span>
+    <CodingTime />
+  </div>
+</div>
+</div>
 
           <div className="flex justify-center gap-3">
             <Link href="/resume" className="px-5 py-2 bg-primary text-primary-foreground font-medium text-sm rounded-full hover:scale-105 transition-transform">
