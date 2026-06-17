@@ -20,7 +20,7 @@ export default function FloatingBottomNav({ currentPath }: FloatingBottomNavProp
   const active = currentPath ?? ""
 
   return (
-    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-card/90 backdrop-blur-xl border border-border/60 rounded-2xl p-1.5 flex gap-1 z-50 shadow-2xl">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-card/90 backdrop-blur-x2 border border-border/60 rounded-2xl p-1.5 flex gap-1 z-50 shadow-2xl">
       {navItems.map(({ href, Icon, label }) => {
         const isActive = active === href
         return (
@@ -29,10 +29,10 @@ export default function FloatingBottomNav({ currentPath }: FloatingBottomNavProp
             href={href}
             aria-label={label}
             className={`p-3 rounded-xl transition ${
-              isActive ? "bg-foreground/10" : "hover:bg-foreground/10 hover:text-pink-300"
+              isActive ? "bg-foreground/10" : "hover:bg-foreground/10"
             }`}
           >
-            <Icon size={20} strokeWidth={1.5} className="text-foreground" />
+            <Icon size={20} strokeWidth={2} className="text-foreground" />
           </Link>
         )
       })}

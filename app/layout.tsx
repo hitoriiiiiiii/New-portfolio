@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-
 import { Providers } from "./providers";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import FloatingMascot from "@/components/FloatingMascot";
@@ -19,11 +18,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
+        url: "hitori-ico.png",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "/icon-dark-32x32.png",
+        url: "hitori-ico.png",
         media: "(prefers-color-scheme: dark)",
       },
       {
@@ -46,7 +45,6 @@ export default function RootLayout({
             {/* Content above background grid */}
             <FloatingMascot />
             <div className="relative z-10">{children}</div>
-
             <ThemeToggle />
 
           </div>

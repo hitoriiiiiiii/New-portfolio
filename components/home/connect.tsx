@@ -76,7 +76,7 @@ export default function ConnectSection() {
                   sm:h-14 sm:w-14
                   items-center
                   justify-center
-                  rounded-full
+                  rounded-2xl
                   border
                   border-border/60
                   bg-background/60

@@ -8,6 +8,7 @@ import SkillsSection from "@/components/home/skills";
 import QuoteSection from "@/components/home/quote";
 import ConnectSection from "@/components/home/connect";
 import { FlipAvatar } from "@/components/FlipAvatar";
+import Footer from "@/components/Footer"; 
 import Link from "next/link";
 
 
@@ -98,6 +99,8 @@ export default function Portfolio() {
         <QuoteSection />
 
         <ConnectSection />
+
+        <Footer />  
 
 
       </div>
