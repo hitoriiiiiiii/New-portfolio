@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Providers } from "./providers";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import FloatingMascot from "@/components/FloatingMascot";
 
 
 const poppins = Poppins({
@@ -15,7 +16,6 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Prarthana Gade | Portfolio",
   description: "Software Developer & Designer",
-  generator: "v0.app",
   icons: {
     icon: [
       {
@@ -44,6 +44,7 @@ export default function RootLayout({
         <Providers>
           <div className="min-h-screen w-full bg-background relative overflow-hidden">
             {/* Content above background grid */}
+            <FloatingMascot />
             <div className="relative z-10">{children}</div>
 
             <ThemeToggle />

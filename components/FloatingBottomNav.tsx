@@ -39,4 +39,3 @@ export default function FloatingBottomNav({ currentPath }: FloatingBottomNavProp
     </div>
   )
 }
-
