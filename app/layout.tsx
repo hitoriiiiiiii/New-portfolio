@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 import { Providers } from "./providers";
@@ -48,7 +47,7 @@ export default function RootLayout({
             <div className="relative z-10">{children}</div>
 
             <ThemeToggle />
-            {process.env.NODE_ENV === "production" && <Analytics />}
+
           </div>
         </Providers>
       </body>

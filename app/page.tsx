@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import FloatingBottomNav from "@/components/FloatingBottomNav";
 import DesignsSection from "@/components/home/designs";
 import ProjectsSection from "@/components/home/projects";
+import GithubHeatmap from "@/components/home/githubmap";
 import SkillsSection from "@/components/home/skills";
+import QuoteSection from "@/components/home/quote";
 import ConnectSection from "@/components/home/connect";
 import { FlipAvatar } from "@/components/FlipAvatar";
 import Link from "next/link";
@@ -69,6 +71,21 @@ export default function Portfolio() {
           </p>
         </motion.section>
 
+        {/* GITHUB HEATMAP */}
+        <section className="mb-20">
+      <div className="rounded-3xl border border-border bg-card p-6 md:p-8 shadow-lg">
+        <h2 className="text-2xl font-semibold mb-2">
+          GitHub Activity
+        </h2>
+
+        <p className="text-sm text-muted-foreground mb-6">
+          My coding consistency and open-source contributions.
+        </p>
+
+        <GithubHeatmap />
+      </div>
+    </section>
+
         {/* SKILLS */}
         <SkillsSection />
 
@@ -76,6 +93,9 @@ export default function Portfolio() {
         <ProjectsSection />
         {/* DESIGNS */}
         <DesignsSection />
+
+        {/* QUOTE */}
+        <QuoteSection />
 
         <ConnectSection />
 
