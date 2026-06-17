@@ -43,7 +43,7 @@ export default function Portfolio() {
 
             <Link
               href="/contact"
-              className="px-5 py-2 flex items-center justify-center text-foreground bg-transparent font-medium text-sm rounded-[24.0817px] hover:opacity-95 transition"
+              className="px-5 py-2 flex items-center justify-center text-foreground bg-transparent font-medium text-sm rounded-[24.0817px] hover:opacity-95 hover:scale-105 transition"
               style={{ background: "linear-gradient(95.56deg, #FE94DA 8.35%, #F7D5EC 71.01%)" }}
             >
               Get In Touch

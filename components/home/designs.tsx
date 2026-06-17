@@ -89,11 +89,21 @@ export default function DesignsSection() {
         ))}
       </div>
 
-      <Link
+       <Link
         href="/designs"
-        className="inline-flex items-center justify-center mt-8 px-6 py-3 rounded-xl bg-primary text-primary-foreground text-sm font-medium"
+        className="btn-grad mx-auto block max-w-[280px] w-full sm:w-auto h-[44px] px-4 py-2 rounded-xl text-sm font-medium transition hover:opacity-95"
+        aria-label="View All Projects"
       >
-        Load More Designs
+        <motion.span
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: 0.15 }}
+          whileHover={{ scale: 1.04, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          className="flex h-full items-center justify-center"
+        >
+          Load more Designs
+        </motion.span>
       </Link>
     </motion.section>
   );
