@@ -44,8 +44,6 @@ export default function RootLayout({
       <body className="antialiased font-sans bg-background text-foreground">
         <Providers>
           <div className="min-h-screen w-full bg-background relative overflow-hidden">
-    
-
             {/* Content above background grid */}
             <div className="relative z-10">{children}</div>
 

@@ -1,12 +1,12 @@
-"use client"
-import { motion } from "framer-motion"
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"
-import Image from "next/image"
-import FloatingBottomNav from "@/components/FloatingBottomNav"
-import DesignsSection from "@/components/home/designs"
-import ProjectsSection from "@/components/home/projects"
-import SkillsSection from "@/components/home/skills"
-import ConnectSection from "@/components/home/connect"
+"use client";
+import { motion } from "framer-motion";
+import FloatingBottomNav from "@/components/FloatingBottomNav";
+import DesignsSection from "@/components/home/designs";
+import ProjectsSection from "@/components/home/projects";
+import SkillsSection from "@/components/home/skills";
+import ConnectSection from "@/components/home/connect";
+import { FlipAvatar } from "@/components/FlipAvatar";
+import Link from "next/link";
 
 
 
@@ -23,10 +23,9 @@ export default function Portfolio() {
         >
           <div className="flex items-center justify-center gap-3 mb-3 flex-wrap">
             <h1 className="text-3xl md:text-4xl font-semibold">Hi, I am</h1>
-            <div className="relative w-[78px] h-[78px] rounded-[19.2654px] overflow-hidden border border-foreground/90 transform -rotate-[10deg]">
-              <Image src="/hitori.jpg" alt="Prarthana" fill className="object-cover" priority />
-            </div>
+            <FlipAvatar />
             <h1 className="text-3xl md:text-4xl font-semibold">Prarthana Gade!</h1>
+
           </div>
 
           <div className="flex items-center justify-center gap-3 mb-6 flex-wrap">
@@ -38,15 +37,18 @@ export default function Portfolio() {
           </div>
 
           <div className="flex justify-center gap-3">
-            <button className="px-5 py-2 bg-primary text-primary-foreground font-medium text-sm rounded-full hover:scale-105 transition-transform">
+            <Link href="/resume" className="px-5 py-2 bg-primary text-primary-foreground font-medium text-sm rounded-full hover:scale-105 transition-transform">
               View Resume
-            </button>
-            <button
+            </Link>
+
+            <Link
+              href="/contact"
               className="px-5 py-2 flex items-center justify-center text-foreground bg-transparent font-medium text-sm rounded-[24.0817px] hover:opacity-95 transition"
               style={{ background: "linear-gradient(95.56deg, #FE94DA 8.35%, #F7D5EC 71.01%)" }}
             >
               Get In Touch
-            </button>
+            </Link>
+
           </div>
         </motion.section>
 
@@ -72,12 +74,11 @@ export default function Portfolio() {
 
         {/* PROJECTS */}
         <ProjectsSection />
-
         {/* DESIGNS */}
         <DesignsSection />
 
-
         <ConnectSection />
+
 
       </div>
 

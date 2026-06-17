@@ -16,22 +16,22 @@ export default function ConnectSection() {
       <div className="flex justify-center gap-8">
         <Linkedin
           size={32}
-          className="cursor-pointer transition text-foreground/90 hover:text-primary"
+          className="cursor-pointer transition text-foreground/90 hover:text-[#FB9DE7] hover:drop-shadow-[0_0_12px_rgba(251,157,231,0.6)]"
           aria-label="LinkedIn"
         />
         <Github
           size={32}
-          className="cursor-pointer transition text-foreground/90 hover:text-primary"
+          className="cursor-pointer transition text-foreground/90 hover:text-[#FB9DE7] hover:drop-shadow-[0_0_12px_rgba(251,157,231,0.6)]"
           aria-label="GitHub"
         />
         <Mail
           size={32}
-          className="cursor-pointer transition text-foreground/90 hover:text-primary"
+          className="cursor-pointer transition text-foreground/90 hover:text-[#FB9DE7] hover:drop-shadow-[0_0_12px_rgba(251,157,231,0.6)]"
           aria-label="Email"
         />
         <Twitter
           size={32}
-          className="cursor-pointer transition text-foreground/90 hover:text-primary"
+          className="cursor-pointer transition text-foreground/90 hover:text-[#FB9DE7] hover:drop-shadow-[0_0_12px_rgba(251,157,231,0.6)]"
           aria-label="Twitter"
         />
       </div>
