@@ -7,29 +7,28 @@ import {
   FaGithub,
   FaLinkedinIn,
   FaXTwitter,
+  FaInstagram,
 } from "react-icons/fa6"
-
-import { MdEmail } from "react-icons/md"
 
 const socials = [
   {
     icon: FaLinkedinIn,
-    href: "https://linkedin.com/in/YOUR_LINKEDIN",
+    href: "https://www.linkedin.com/in/prarthana-gade-400040256/",
     label: "LinkedIn",
   },
   {
     icon: FaGithub,
-    href: "https://github.com/YOUR_GITHUB",
+    href: "https://github.com/hitoriiiiiiii",
     label: "GitHub",
   },
   {
-    icon: MdEmail,
-    href: "mailto:your@email.com",
-    label: "Email",
+    icon: FaInstagram,
+    href: "https://www.instagram.com/i_am_osseumm",
+    label: "Instagram",
   },
   {
     icon: FaXTwitter,
-    href: "https://x.com/YOUR_USERNAME",
+    href: "https://x.com/PanicCoder",
     label: "X",
   },
 ]
@@ -41,17 +40,17 @@ export default function ConnectSection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className="text-center py-12"
+      className="py-16 text-center"
     >
-      <h2 className="text-2xl sm:text-3xl font-semibold mb-2">
+      <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">
         Let's Connect
       </h2>
 
-      <p className="text-sm text-muted-foreground mb-8">
-        Feel free to reach out and connect with me.
+      <p className="mt-3 text-muted-foreground max-w-md mx-auto">
+        Feel free to connect with me on social platforms and explore my work.
       </p>
 
-      <div className="flex items-center justify-center gap-4 sm:gap-6">
+      <div className="mt-8 inline-flex items-center gap-3">
         {socials.map((social) => {
           const Icon = social.icon
 
@@ -63,29 +62,32 @@ export default function ConnectSection() {
                 scale: 1.08,
               }}
               whileTap={{
-                scale: 0.92,
+                scale: 0.95,
               }}
             >
               <Link
                 href={social.href}
                 target="_blank"
+                rel="noopener noreferrer"
                 aria-label={social.label}
                 className="
                   flex
-                  h-20 w-20
-                  sm:h-14 sm:w-14
+                  h-12
+                  w-12
+                  sm:h-14
+                  sm:w-14
                   items-center
                   justify-center
-                  rounded-2xl
+                  rounded-xl
                   border
-                  border-border/60
-                  bg-background/60
-                  backdrop-blur-xl
-                  shadow-lg
+                  border-border/50
+                  bg-background/80
+                  backdrop-blur-md
+                  shadow-sm
                   transition-all
                   duration-300
-                  hover:border-primary/40
-                  hover:shadow-[0_0_12px_rgba(251,157,231,0.25)]
+                  hover:border-primary/50
+                  hover:shadow-xl
                 "
               >
                 <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-foreground" />

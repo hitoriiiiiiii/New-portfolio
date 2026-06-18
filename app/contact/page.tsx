@@ -40,19 +40,19 @@ export default function ContactPage() {
       },
     },
     {
-      href: "https://twitter.com/prarthana_dev",
+      href: "https://x.com/PanicCoder",
       Icon: Twitter,
       title: "Twitter",
       subtitle: "Dm me on twitter",
     },
     {
-      href: "https://github.com/prarthana-gade",
+      href: "https://github.com/hitoriiiiiiii",
       Icon: Github,
       title: "Github",
       subtitle: "View My all Projects",
     },
     {
-      href: "https://linkedin.com/in/prarthana-gade",
+      href: "https://linkedin.com/in/prarthana-gade-400040256/",
       Icon: Linkedin,
       title: "LinkedIn",
       subtitle: "Connect with me",
@@ -95,6 +95,34 @@ export default function ContactPage() {
             Let’s Build Something Amazing Together
           </p>
         </motion.div>
+      <div className="grid grid-cols-3 gap-2 mb-6">
+  <div className="rounded-xl border border-border/60 p-2.5 text-center">
+    <p className="text-[10px] sm:text-xs text-muted-foreground">
+      Location
+    </p>
+    <h3 className="font-medium text-[11px] sm:text-sm mt-1">
+      Pune, India
+    </h3>
+  </div>
+
+  <div className="rounded-xl border border-border/60 p-2.5 text-center">
+    <p className="text-[10px] sm:text-xs text-muted-foreground">
+      Role
+    </p>
+    <h3 className="font-medium text-[11px] sm:text-sm mt-1">
+      Full Stack  Developer
+    </h3>
+  </div>
+
+  <div className="rounded-xl border border-border/60 p-2.5 text-center">
+    <p className="text-[10px] sm:text-xs text-muted-foreground">
+      Status
+    </p>
+    <h3 className="font-medium text-[11px] sm:text-sm mt-1">
+      Open to Opportunities
+    </h3>
+  </div>
+</div>
 
         <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
           {/* FORM */}
