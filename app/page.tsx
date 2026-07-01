@@ -1,5 +1,11 @@
 "use client";
+
 import { motion } from "framer-motion";
+
+// metadata for this route is defined in app/page.metadata.ts (server-side)
+
+
+
 import FloatingBottomNav from "@/components/FloatingBottomNav";
 import DesignsSection from "@/components/home/designs";
 import ProjectsSection from "@/components/home/projects";
@@ -8,9 +14,12 @@ import SkillsSection from "@/components/home/skills";
 import QuoteSection from "@/components/home/quote";
 import ConnectSection from "@/components/home/connect";
 import { FlipAvatar } from "@/components/FlipAvatar";
-import CodingTime from "@/components/home/codingtime";  
-import Footer from "@/components/Footer"; 
+import CodingTime from "@/components/home/codingtime";
+import Footer from "@/components/Footer";
 import Link from "next/link";
+
+
+
 
 
 

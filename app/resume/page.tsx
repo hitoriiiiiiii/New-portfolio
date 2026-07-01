@@ -1,46 +1,59 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Download, Eye, Home, Folder, Palette, FileText } from "lucide-react"
-import Link from "next/link"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion";
+import { Download, Eye, FileText, Folder, Home, Palette } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+
+import { ScrollProgress } from "@/components/Scroll-progress";
+
 
 export default function ResumePage() {
-  const [numPages, setNumPages] = useState<number>()
-  const [pageNumber, setPageNumber] = useState(1)
-  const [loading, setLoading] = useState(true)
-  const [pdfWidth, setPdfWidth] = useState(0)
-  const [pdfComponents, setPdfComponents] = useState<{ Document: any; Page: any } | null>(null)
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const [numPages, setNumPages] = useState<number | undefined>();
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const [loading, setLoading] = useState(true);
+  const [pdfWidth, setPdfWidth] = useState(0);
+  const [pdfComponents, setPdfComponents] = useState<{
+    Document: any;
+    Page: any;
+  } | null>(null);
 
   useEffect(() => {
     async function loadPdfComponents() {
-      const pdfModule = await import("react-pdf")
-      pdfModule.pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfModule.pdfjs.version}/build/pdf.worker.min.js`
-      setPdfComponents({ Document: pdfModule.Document, Page: pdfModule.Page })
+      const pdfModule = await import("react-pdf");
+
+      // Use local worker file to avoid runtime fetch failures in prod.
+      // This file exists in /public as: public/pdf.worker.min.js
+      pdfModule.pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
+
+      setPdfComponents({ Document: pdfModule.Document, Page: pdfModule.Page });
     }
 
     function updateWidth() {
-      const width = Math.min(window.innerWidth - 32, 600)
-      setPdfWidth(width > 300 ? width : 300)
+      const width = Math.min(window.innerWidth - 32, 600);
+      setPdfWidth(width > 300 ? width : 300);
     }
 
-    loadPdfComponents()
-    updateWidth()
-    window.addEventListener("resize", updateWidth)
-    return () => window.removeEventListener("resize", updateWidth)
-  }, [])
+    loadPdfComponents();
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
   // UPDATE THIS: Path to your PDF in /public folder
-  const resumeUrl = "/prarthana-gade-resume.pdf"
+  const resumeUrl = "/Resume.prarthana.pdf";
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
-    setNumPages(numPages)
-    setLoading(false)
+    setNumPages(numPages);
+    setLoading(false);
   }
 
   return (
     <main className="bg-background min-h-screen text-foreground">
-        <div className="max-w-full w-full mx-auto px-4 sm:px-6 pt-24 pb-32">
+      <div className="max-w-full w-full mx-auto px-4 sm:px-6 pt-24 pb-32">
         {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,8 +71,12 @@ export default function ResumePage() {
           transition={{ delay: 0.2 }}
           className="flex justify-center gap-3 mb-8"
         >
-          {/* Removed "Open in New Tab" button (was causing SSR/pdfjs issues) */}
-          <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="hidden">
+          <a
+            href={resumeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden"
+          >
             <Eye size={16} />
           </a>
 
@@ -77,29 +94,58 @@ export default function ResumePage() {
           transition={{ delay: 0.3 }}
           className="flex justify-center"
         >
-          <div className="bg-card rounded-xl p-2 shadow-2xl border border-border w-full max-w-[600px]">
-            {loading && (
-              <div className="w-full h-[800px] bg-card animate-pulse rounded-lg flex items-center justify-center">
-                <span className="text-muted-foreground">Loading Resume...</span>
-              </div>
-            )}
-
-            {pdfComponents ? (
-              <pdfComponents.Document
-                file={resumeUrl}
-                onLoadSuccess={onDocumentLoadSuccess}
-                loading=""
-                className="flex justify-center"
-              >
-                <pdfComponents.Page
-                  pageNumber={pageNumber}
-                  renderTextLayer={false}
-                  renderAnnotationLayer={false}
-                  width={pdfWidth || 320}
-                  className="rounded-lg"
+          <div className="bg-c51ard rounded-xl p-2 shadow-2xl border border-border w-full max-w-[600px]">
+            <div
+              ref={scrollContainerRef}
+              className="relative h-[420px] overflow-auto px-4 pb-2"
+            >
+              {/* track */}
+              <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-1 bg-[#E6F4FE] dark:bg-[#111927] opacity-60" />
+              {/* progress */}
+              <div className="absolute left-0 top-0 z-10 w-2 h-full">
+                <ScrollProgress
+                  containerRef={scrollContainerRef}
+                  direction="vertical"
+                  className="h-full w-full bg-[#0090FF]"
                 />
-              </pdfComponents.Document>
-            ) : null}
+              </div>
+
+              <div className="pt-1">
+                {pdfComponents ? (
+                  <pdfComponents.Document
+                    file={resumeUrl}
+                    onLoadSuccess={onDocumentLoadSuccess}
+                    loading=""
+                    className="flex justify-center"
+                    options={{
+                      // speeds up initial view in many cases
+                      cMapUrl: undefined,
+                      cMapPacked: true,
+                    }}
+                  >
+                    {loading && (
+                      <div className="w-full h-[800px] bg-card animate-pulse rounded-lg flex items-center justify-center">
+                        <span className="text-muted-foreground">Loading Resume...</span>
+                      </div>
+                    )}
+
+                    <div className={loading ? "hidden" : "block"}>
+                      <pdfComponents.Page
+                        pageNumber={pageNumber}
+                        renderTextLayer={false}
+                        renderAnnotationLayer={false}
+                        width={pdfWidth || 320}
+                        className="rounded-lg"
+                      />
+                    </div>
+                  </pdfComponents.Document>
+                ) : (
+                  <div className="w-full h-[800px] bg-card animate-pulse rounded-lg flex items-center justify-center">
+                    <span className="text-muted-foreground">Preparing viewer...</span>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         </motion.div>
 
@@ -131,23 +177,39 @@ export default function ResumePage() {
 
       {/* Floating Bottom Nav - Same as other pages */}
       <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-card/90 backdrop-blur-xl border border-border/60 rounded-2xl p-1.5 flex gap-1 z-50 shadow-2xl">
-        <Link href="/" className="p-3 hover:bg-white/10 rounded-xl transition" aria-label="Home">
+        <Link
+          href="/"
+          className="p-3 hover:bg-white/10 rounded-xl transition"
+          aria-label="Home"
+        >
           <Home size={20} strokeWidth={1.5} />
         </Link>
 
-        <Link href="/projects" className="p-3 hover:bg-white/10 rounded-xl transition" aria-label="Projects">
+        <Link
+          href="/projects"
+          className="p-3 hover:bg-white/10 rounded-xl transition"
+          aria-label="Projects"
+        >
           <Folder size={20} strokeWidth={1.5} />
         </Link>
 
-        <Link href="/designs" className="p-3 hover:bg-white/10 rounded-xl transition" aria-label="Designs">
+        <Link
+          href="/designs"
+          className="p-3 hover:bg-white/10 rounded-xl transition"
+          aria-label="Designs"
+        >
           <Palette size={20} strokeWidth={1.5} />
         </Link>
 
-        <Link href="/resume" className="p-3 bg-white/10 rounded-xl transition" aria-label="Resume">
+        <Link
+          href="/resume"
+          className="p-3 bg-white/10 rounded-xl transition"
+          aria-label="Resume"
+        >
           <FileText size={20} strokeWidth={1.5} />
         </Link>
       </div>
     </main>
-  )
+  );
 }
 

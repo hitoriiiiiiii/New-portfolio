@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./providers";
-import { ThemeToggle } from "@/components/ThemeToggle";
-import FloatingMascot from "@/components/FloatingMascot";
 
+import { Providers } from "./providers";
+import LayoutClient from "./layout-client";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -14,15 +13,23 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: "Prarthana Gade | Portfolio",
-  description: "Software Developer & Designer",
+  description:
+    "Software Developer & Designer. Building modern responsive web apps with React, Next.js, TypeScript, and UI/UX-focused design.",
+
+  metadataBase: new URL("https://prarthana-gade.vercel.app"),
+
+  alternates: {
+    canonical: "https://prarthana-gade.vercel.app/",
+  },
+
   icons: {
     icon: [
       {
-        url: "hitori-ico.png",
+        url: "/hitori-ico.png",
         media: "(prefers-color-scheme: light)",
       },
       {
-        url: "hitori-ico.png",
+        url: "/hitori-ico.png",
         media: "(prefers-color-scheme: dark)",
       },
       {
@@ -30,7 +37,33 @@ export const metadata: Metadata = {
         type: "image/svg+xml",
       },
     ],
+
     apple: "/apple-icon.png",
+  },
+
+  openGraph: {
+    type: "website",
+    title: "Prarthana Gade | Portfolio",
+    description:
+      "Software Developer & Designer. Building modern responsive web apps with React, Next.js, TypeScript, and UI/UX-focused design.",
+
+    images: [
+      {
+        url: "/hitori-ico.png",
+        width: 512,
+        height: 512,
+        alt: "Prarthana Gade Portfolio",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Prarthana Gade | Portfolio",
+    description:
+      "Software Developer & Designer. Building modern responsive web apps with React, Next.js, TypeScript, and UI/UX-focused design.",
+
+    images: ["/hitori-ico.png"],
   },
 };
 
@@ -38,19 +71,16 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={poppins.variable} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={poppins.variable}
+      suppressHydrationWarning
+    >
       <body className="antialiased font-sans bg-background text-foreground">
         <Providers>
-          <div className="min-h-screen w-full bg-background relative overflow-hidden">
-            {/* Content above background grid */}
-            {/*<FloatingMascot />*/}
-            <div className="relative z-10">{children}</div>
-            <ThemeToggle />
-
-          </div>
+          <LayoutClient>{children}</LayoutClient>
         </Providers>
       </body>
     </html>
   );
 }
-

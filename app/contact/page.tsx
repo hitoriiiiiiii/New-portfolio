@@ -1,9 +1,17 @@
 "use client"
 
+import type { Metadata } from "next";
+
 import { motion } from "framer-motion"
 import { Github, Linkedin, Mail, Twitter, Send } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+
+// metadata moved to app/contact/metadata.ts (server only)
+
+
+
+
 import { toast } from "@/hooks/use-toast"
 import { Toaster } from "@/components/ui/toaster"
 import FloatingBottomNav from "@/components/FloatingBottomNav"

@@ -1,10 +1,17 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useState } from "react"
+import type { Metadata } from "next";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
-import FloatingBottomNav from "@/components/FloatingBottomNav"
-import ProjectTileCard from "@/components/ProjectTileCard"
+import FloatingBottomNav from "@/components/FloatingBottomNav";
+import ProjectTileCard from "@/components/ProjectTileCard";
+
+// metadata moved to app/projects/metadata.ts (server only)
+
+
+
+
 
 const projectsData = [
   {

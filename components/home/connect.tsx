@@ -15,21 +15,25 @@ const socials = [
     icon: FaLinkedinIn,
     href: "https://www.linkedin.com/in/prarthana-gade-400040256/",
     label: "LinkedIn",
+    tooltip: "@prarthana-gade-400040256",
   },
   {
     icon: FaGithub,
     href: "https://github.com/hitoriiiiiiii",
     label: "GitHub",
+    tooltip: "@hitoriiiiiiii",
   },
   {
     icon: FaInstagram,
     href: "https://www.instagram.com/i_am_osseumm",
     label: "Instagram",
+    tooltip: "@i_am_osseumm",
   },
   {
     icon: FaXTwitter,
     href: "https://x.com/PanicCoder",
     label: "X",
+    tooltip: "@PanicCoder",
   },
 ]
 
@@ -55,44 +59,49 @@ export default function ConnectSection() {
           const Icon = social.icon
 
           return (
-            <motion.div
-              key={social.label}
-              whileHover={{
-                y: -4,
-                scale: 1.08,
-              }}
-              whileTap={{
-                scale: 0.95,
-              }}
-            >
-              <Link
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.label}
-                className="
-                  flex
-                  h-12
-                  w-12
-                  sm:h-14
-                  sm:w-14
-                  items-center
-                  justify-center
-                  rounded-xl
-                  border
-                  border-border/50
-                  bg-background/80
-                  backdrop-blur-md
-                  shadow-sm
-                  transition-all
-                  duration-300
-                  hover:border-primary/50
-                  hover:shadow-xl
-                "
+            <div key={social.label} className="group relative">
+              <motion.div
+                whileHover={{
+                  y: -4,
+                  scale: 1.08,
+                }}
+                whileTap={{
+                  scale: 0.95,
+                }}
               >
-                <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-foreground" />
-              </Link>
-            </motion.div>
+                <Link
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="
+                    flex
+                    h-12
+                    w-12
+                    sm:h-14
+                    sm:w-14
+                    items-center
+                    justify-center
+                    rounded-xl
+                    border
+                    border-border/50
+                    bg-background/80
+                    backdrop-blur-md
+                    shadow-sm
+                    transition-all
+                    duration-300
+                    hover:border-primary/50
+                    hover:shadow-xl
+                  "
+                >
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-foreground" />
+                </Link>
+              </motion.div>
+
+              <span className="pointer-events-none absolute left-1/2 top-full mt-2 -translate-x-1/2 whitespace-nowrap rounded-full border border-border/70 bg-background/95 px-2.5 py-1 text-xs font-medium text-foreground shadow-lg opacity-0 transition-all duration-200 group-hover:opacity-100 group-hover:translate-y-1">
+                {social.tooltip}
+              </span>
+            </div>
           )
         })}
       </div>

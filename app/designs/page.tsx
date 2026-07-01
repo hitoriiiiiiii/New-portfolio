@@ -1,9 +1,17 @@
 "use client"
 
+import type { Metadata } from "next";
+
 import { AnimatePresence, motion } from "framer-motion"
 import { ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
+
+// metadata moved to app/designs/metadata.ts (server only)
+
+
+
+
 
 import FloatingBottomNav from "@/components/FloatingBottomNav"
 
